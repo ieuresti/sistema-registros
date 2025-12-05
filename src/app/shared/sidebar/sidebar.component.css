@@ -1,0 +1,44 @@
+/* Sidebar styles: width, spacing and responsive behavior for the app's left navigation */
+.app-sidenav {
+    width: 260px;
+    background: #fff;
+    height: 100vh;
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.sidenav-accordion {
+    padding: 0 0.5rem
+}
+
+.sidenav-accordion mat-expansion-panel {
+    box-shadow: none;
+    border-radius: 4px
+}
+
+.sidenav-accordion mat-panel-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600
+}
+
+.sidenav-accordion mat-panel-title mat-icon {
+    color: rgba(0, 0, 0, 0.6)
+}
+
+.sidenav-accordion a.mat-list-item {
+    padding-left: 40px
+}
+
+@media (max-width:900px) {
+    .app-sidenav {
+        width: 220px
+    }
+}
+
+@media (max-width:600px) {
+    /* hide sidebar on small screens (you can toggle via a button) */
+    .app-sidenav {
+        display: none
+    }
+}

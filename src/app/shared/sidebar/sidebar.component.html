@@ -1,0 +1,58 @@
+<!-- ============================================================== -->
+<!-- Logo -->
+<!-- ============================================================== -->
+<nav class="app-sidenav">
+    <mat-accordion class="sidenav-accordion" multi>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-icon>person</mat-icon>
+                    Usuario
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-nav-list>
+                <a mat-list-item routerLink="/profile">Mi perfil</a>
+                <a mat-list-item routerLink="/settings">Ajustes</a>
+                <a mat-list-item (click)="logout()">Logout</a>
+            </mat-nav-list>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-icon>groups</mat-icon>
+                    Usuarios
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-nav-list>
+                <a mat-list-item routerLink="/users">Usuarios</a>
+                <a mat-list-item routerLink="/providers">Proveedores</a>
+            </mat-nav-list>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-icon>security</mat-icon>
+                    Seguridad
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-nav-list>
+                <a mat-list-item routerLink="/security/appointments">Citas</a>
+            </mat-nav-list>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-icon>event</mat-icon>
+                    Agenda
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-nav-list>
+                <a mat-list-item routerLink="/agenda/events">Eventos</a>
+            </mat-nav-list>
+        </mat-expansion-panel>
+    </mat-accordion>
+</nav>

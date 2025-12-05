@@ -1,0 +1,129 @@
+/* Breadcrumbs styles: container with title and trail.
+   - Title on the left, trail on the right for large screens.
+   - On small screens the layout stacks vertically.
+*/
+.breadcrumbs-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.5rem;
+    background: transparent;
+}
+
+.page-header {
+    flex: 0 0 auto
+}
+
+.page-title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.87)
+}
+
+.breadcrumbs {
+    flex: 1 1 auto;
+    text-align: right
+}
+
+.breadcrumbs ol {
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0;
+    margin: 0
+}
+
+.breadcrumbs li {
+    display: flex;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.6)
+}
+
+.breadcrumbs a {
+    color: rgba(0, 0, 0, 0.6);
+    text-decoration: none;
+    padding: 0 0.25rem
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline
+}
+
+.breadcrumbs .sep {
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.38)
+}
+
+.breadcrumbs .current {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.87);
+    padding-left: 0.25rem
+}
+
+.breadcrumbs li:last-child .sep {
+    display: none
+}
+
+@media (max-width:900px) {
+    .breadcrumbs-container {
+        flex-direction: column;
+        align-items: flex-start
+    }
+
+    .breadcrumbs {
+        text-align: left;
+        width: 100%
+    }
+}
+
+@media (max-width:600px) {
+    .breadcrumbs-container {
+        padding: 0.25rem 0.5rem
+    }
+
+    .page-title {
+        font-size: 1rem
+    }
+
+    .breadcrumbs .sep {
+        display: none
+    }
+}
+
+/* Fade-in animation for subtle entrance */
+.fade-in {
+    animation: breadcrumb-fade 320ms ease both
+}
+
+@keyframes breadcrumb-fade {
+    from {
+        opacity: 0;
+        transform: translateY(6px)
+    }
+
+    to {
+        opacity: 1;
+        transform: none
+    }
+}
+
+/* Home icon spacing */
+.home-icon {
+    vertical-align: middle;
+    font-size: 20px;
+    margin-right: 6px;
+    color: rgba(0, 0, 0, 0.6)
+}
+
+/* Utility: visually hide text but keep it readable by screen readers */
+.visually-hidden {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap
+}

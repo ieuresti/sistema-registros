@@ -1,0 +1,86 @@
+.generar-cita-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cita-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-row {
+    display: flex;
+    gap: 12px;
+}
+
+.full-width {
+    flex: 1;
+}
+
+.file-label {
+    margin-right: 8px;
+    font-weight: 600;
+}
+
+.file-list small {
+    display: block;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.form-actions {
+    margin-top: 8px;
+}
+
+@media (max-width: 720px) {
+    .form-row {
+        flex-direction: column;
+    }
+}
+
+.file-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-left: 8px;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.file-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 260px;
+}
+
+.file-actions {
+    margin-top: 6px;
+}
+
+.file-item button {
+    height: 28px;
+    width: 28px;
+}
+
+/* Upload button styling */
+.file-row { align-items: center; gap: 12px; }
+.btn-upload { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 6px 12px; border-radius: 8px; font-weight: 600; }
+.btn-upload mat-icon { font-size: 20px; }
+
+/* file item and action buttons */
+.file-item { background: rgba(0,0,0,0.03); padding: 6px 8px; border-radius: 6px; }
+.btn-remove { min-width: 32px; height: 32px; width: 32px; border-radius: 6px; }
+.btn-clear { margin-top: 6px; border-radius: 6px; }
+
+/* ensure mat-error for documentos is visible below upload button */
+.file-row mat-error { display: block; margin-top: 6px; }
+
+@media (max-width: 720px) {
+    .file-row { align-items: flex-start; }
+}

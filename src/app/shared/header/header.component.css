@@ -1,0 +1,102 @@
+/* Header styles: toolbar, logo, user menu and responsive tweaks */
+.app-header {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.app-header .left {
+    display: flex;
+    align-items: center
+}
+
+.app-logo {
+    height: 36px;
+    width: 36px;
+    object-fit: contain;
+    margin-right: 8px
+}
+
+.app-title {
+    font-weight: 600;
+    color: inherit
+}
+
+.spacer {
+    flex: 1 1 auto
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem
+}
+
+.search-field {
+    width: 240px
+}
+
+.search-wrapper {
+    display: flex;
+    align-items: center
+}
+
+.search-wrapper.active .search-field {
+    display: block
+}
+
+.flag {
+    font-size: 20px
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover
+}
+
+.avatar-lg {
+    width: 64px;
+    height: 64px;
+    object-fit: cover
+}
+
+.user-card {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.75rem
+}
+
+.user-name {
+    font-weight: 600
+}
+
+.user-email {
+    font-size: 0.85rem;
+    color: rgba(0, 0, 0, 0.6)
+}
+
+.user-menu mat-divider {
+    margin: 0.25rem 0
+}
+
+@media (max-width:600px) {
+    .app-title {
+        display: none
+    }
+
+    .search-field {
+        width: 140px
+    }
+
+    .flag {
+        display: none
+    }
+}

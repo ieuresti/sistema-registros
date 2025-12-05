@@ -1,0 +1,25 @@
+<!-- ============================================================== -->
+<!-- Bread crumb -->
+<!-- ============================================================== -->
+<div class="breadcrumbs-container fade-in">
+    <div class="page-header">
+        <h3 class="page-title">{{ pageTitle }}</h3>
+    </div>
+
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+            <li>
+                <a routerLink="/" aria-label="Home">
+                    <mat-icon class="home-icon" aria-hidden="true">home</mat-icon>
+                    <span class="visually-hidden">Home</span>
+                </a>
+                <mat-icon class="sep" aria-hidden="true">chevron_right</mat-icon>
+            </li>
+            <li>
+                <span>Página</span>
+                <mat-icon class="sep" aria-hidden="true">chevron_right</mat-icon>
+            </li>
+            <li class="current" aria-current="page">{{ pageTitle }}</li>
+        </ol>
+    </nav>
+</div>

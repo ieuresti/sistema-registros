@@ -1,0 +1,110 @@
+<div class="generar-cita-container">
+    <section>
+        <mat-card>
+            <mat-card-title>Generar Cita</mat-card-title>
+
+            <mat-card-content>
+                <form [formGroup]="citaForm" (ngSubmit)="onCrearCita()" class="cita-form">
+                    <div class="form-row">
+                        <!-- ID visita -->
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label>ID Visita</mat-label>
+                            <input matInput formControlName="idVisita" placeholder="Ingrese ID de la visita">
+                            <mat-error *ngIf="citaForm.get('idVisita')?.hasError('required')">Requerido</mat-error>
+                        </mat-form-field>
+
+                        <!-- ID Proveedor -->
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label>ID Proveedor</mat-label>
+                            <input matInput formControlName="idProveedor" placeholder="Ingrese ID del proveedor">
+                            <mat-error *ngIf="citaForm.get('idProveedor')?.hasError('required')">Requerido</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="form-row">
+                        <!-- ID Empleado / Cliente -->
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label>ID Empleado / Cliente</mat-label>
+                            <input matInput formControlName="idEmpleadoCliente"
+                                placeholder="Ingrese ID empleado o cliente">
+                            <mat-error *ngIf="citaForm.get('idEmpleadoCliente')?.hasError('required')">Requerido</mat-error>
+                        </mat-form-field>
+
+                        <!-- ID Area -->
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label>ID Area</mat-label>
+                            <input matInput formControlName="idArea" placeholder="Ingrese ID de area">
+                            <mat-error *ngIf="citaForm.get('idArea')?.hasError('required')">Requerido</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="form-row">
+                        <!-- Hora Entrada -->
+                        <mat-form-field appearance="outline">
+                            <mat-label>Hora Entrada</mat-label>
+                            <input matInput type="time" formControlName="horaEntrada">
+                            <mat-error *ngIf="citaForm.get('horaEntrada')?.hasError('required')">Requerido</mat-error>
+                            <mat-error *ngIf="citaForm.get('horaEntrada')?.hasError('invalidTime')">Hora inválida</mat-error>
+                        </mat-form-field>
+
+                        <!-- Hora Salida -->
+                        <mat-form-field appearance="outline">
+                            <mat-label>Hora Salida</mat-label>
+                            <input matInput type="time" formControlName="horaSalida">
+                            <mat-error *ngIf="citaForm.get('horaSalida')?.hasError('required')">Requerido</mat-error>
+                            <mat-error *ngIf="citaForm.get('horaSalida')?.hasError('invalidTime')">Hora inválida</mat-error>
+                            <mat-error *ngIf="citaForm.hasError('timeRange') && (citaForm.get('horaSalida')?.touched || citaForm.get('horaSalida')?.dirty)">
+                                La hora de salida debe ser posterior a la hora de entrada
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="form-row file-row">
+                        <!-- Carga de documentos -->
+                        <label class="file-label">Cargar documentos</label>
+
+                        <!-- Botón estilizado que abre el input oculto -->
+                        <button mat-stroked-button color="primary" type="button" class="btn-upload" (click)="triggerFileInput()">
+                            <mat-icon>upload_file</mat-icon>
+                            <span>
+                                {{ archivosSeleccionados.length ? (archivosSeleccionados.length + ' archivo(s)') : 'Seleccionar archivos' }}
+                            </span>
+                        </button>
+
+                        <!-- Input nativo file oculto -->
+                        <input #fileInput type="file" (change)="onFileChange($event)" multiple hidden>
+
+                        <!-- error required para documentos -->
+                        <mat-error
+                            *ngIf="citaForm.get('documentos')?.hasError('required') && (citaForm.get('documentos')?.touched || citaForm.touched)">
+                            Se requiere al menos un documento
+                        </mat-error>
+
+                        <!-- Lista de archivos seleccionados -->
+                        <div class="file-list" *ngIf="archivosSeleccionados.length">
+                            <div class="file-item" *ngFor="let f of archivosSeleccionados; let i = index">
+                                <small class="file-name" title="{{ f.name }}">{{ f.name }}</small>
+                                <button mat-mini-button color="warn" type="button" aria-label="Eliminar archivo"
+                                    class="btn-remove" (click)="removerArchivo(i)">
+                                    <mat-icon>close</mat-icon>
+                                </button>
+                            </div>
+                            <!-- Botón para limpiar/cancelar todos los archivos -->
+                            <div class="file-actions">
+                                <button mat-raised-button color="warn" type="button" class="btn-clear" (click)="limpiarArchivos()">
+                                    Cancelar archivos
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button mat-flat-button color="primary" type="submit" [disabled]="citaForm.invalid">
+                            Enviar
+                        </button>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </section>
+</div>

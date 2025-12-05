@@ -1,0 +1,67 @@
+<mat-toolbar color="primary" class="app-header">
+    <!-- ============================================================== -->
+    <!-- Logo -->
+    <!-- ============================================================== -->
+    <div class="left">
+        <img src="./assets/images/icons/user-icon.png" alt="App logo" class="app-logo" />
+        <span class="app-title">Sistema Registros</span>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="right">
+        <!-- ============================================================== -->
+        <!-- Buscador -->
+        <!-- ============================================================== -->
+        <div class="search-wrapper" [class.active]="buscadorEstaActivo">
+            <button mat-button mat-icon-button (click)="toggleBuscador()">
+                <mat-icon>search</mat-icon>
+            </button>
+            <mat-form-field *ngIf="buscadorEstaActivo" appearance="outline" class="search-field">
+                <input matInput type="search" placeholder="Buscar..." [(ngModel)]="terminoABuscar">
+                <button mat-button mat-icon-button (click)="limpiarBuscador()">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- Selector de idioma -->
+        <!-- ============================================================== -->
+        <button mat-button mat-icon-button [matMenuTriggerFor]="langMenu">
+            <mat-icon>g_translate</mat-icon>
+            <span class="flag">{{ banderaLenguajeSeleccionado }}</span>
+        </button>
+        <mat-menu #langMenu="matMenu">
+            <button mat-menu-item (click)="seleccionarIdioma('en')">🇺🇸 English</button>
+            <button mat-menu-item (click)="seleccionarIdioma('es')">🇪🇸 Español</button>
+        </mat-menu>
+
+        <!-- ============================================================== -->
+        <!-- Perfil -->
+        <!-- ============================================================== -->
+        <button mat-button [matMenuTriggerFor]="userMenu">
+            <img [src]="user.photo" alt="user" class="avatar" />
+        </button>
+        <mat-menu #userMenu="matMenu" class="user-menu">
+            <div class="user-card">
+                <img [src]="user.photo" alt="user photo" class="avatar-lg" />
+                <div class="user-info">
+                    <div class="user-name">{{ user.name }}</div>
+                    <div class="user-email">{{ user.email }}</div>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <button mat-menu-item (click)="cerrarSesion()">
+                <mat-icon>person_outline</mat-icon><span>Mi perfil</span>
+            </button>
+            <button mat-menu-item (click)="cerrarSesion()">
+                <mat-icon>settings</mat-icon><span>Ajustes</span>
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item (click)="cerrarSesion()">
+                <mat-icon>logout</mat-icon><span>Cerrar sesión</span>
+            </button>
+        </mat-menu>
+    </div>
+</mat-toolbar>

@@ -1,1 +1,49 @@
+/* Global styles for the application.
+    - Este archivo contiene estilos globales compartidos por toda la app
+    - Algunas reglas están pensadas para clases en <body> que activan layouts (ej. `fix-header`, `boxed`)
+    - Si un selector parece no usarse actualmente, puede ser activado por scripts o por estados opcionales del layout.
+*/
+
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    background: #fff;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+    color: #67757c;
+    font-weight: 300;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+    background: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Main wrapper for the app. Controls overall width and overflow. */
+#main-wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.page-wrapper {
+    position: relative;
+}
+
+.container-fluid {
+    padding: 25px 25px;
+}
+
+.footer {
+    bottom: 0;
+    color: #67757c;
+    left: 0px;
+    padding: 17px 15px;
+    position: absolute;
+    right: 0;
+    border-top: 1px solid rgba(120, 130, 140, 0.13);
+    background: #ffffff;
+}

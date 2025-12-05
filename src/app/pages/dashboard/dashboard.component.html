@@ -1,0 +1,80 @@
+<div class="dashboard-container">
+    <!-- Seccion cards estadisticas de visitantes -->
+    <section class="cards">
+        <mat-card *ngFor="let visitante of visitantes" class="stat-card">
+            <div class="stat-card-inner">
+                <div class="stat-left">
+                    <mat-icon class="stat-icon" aria-hidden="true">{{ visitante.icono }}</mat-icon>
+                </div>
+                <div class="stat-right">
+                    <mat-card-title>{{ visitante.tipo }}</mat-card-title>
+                    <mat-card-content>
+                        <div class="stat-value">{{ visitante.cantidad }}</div>
+                    </mat-card-content>
+                </div>
+            </div>
+        </mat-card>
+    </section>
+
+    <!-- Seccion tabla visitas recientes -->
+    <section class="table-section">
+        <mat-card>
+            <mat-card-title>Visitas recientes</mat-card-title>
+            <mat-card-content>
+                <div class="table-controls">
+                    <!-- Campo de búsqueda para filtrar la tabla -->
+                    <mat-form-field appearance="outline" class="filter-input">
+                        <mat-label>Buscar</mat-label>
+                        <input matInput (keyup)="aplicarFiltroBusqueda($event)" placeholder="Filtrar tabla">
+                    </mat-form-field>
+                </div>
+
+                <!-- Tabla de visitas recientes -->
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z1 full-width" matSort>
+                    <!-- Avatar -->
+                    <ng-container matColumnDef="avatar">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let element">
+                            <img [src]="element.avatar" alt="avatar" class="avatar">
+                        </td>
+                    </ng-container>
+
+                    <!-- Nombre -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+                        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+                    </ng-container>
+
+                    <!-- Tipo de visita -->
+                    <ng-container matColumnDef="visitType">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo de visita</th>
+                        <td mat-cell *matCellDef="let element">
+                            <mat-chip [ngClass]="getChipClass(element.visitType)" selected>
+                                {{ element.visitType }}
+                            </mat-chip>
+                        </td>
+                    </ng-container>
+
+                    <!-- Email -->
+                    <ng-container matColumnDef="email">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Correo</th>
+                        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+                    </ng-container>
+
+                    <!-- Telefono -->
+                    <ng-container matColumnDef="phone">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Teléfono</th>
+                        <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+
+                <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons aria-label="Paginador de visitas">
+                </mat-paginator>
+            </mat-card-content>
+        </mat-card>
+    </section>
+
+</div>

@@ -1,0 +1,51 @@
+/* Page layout styles: layout wrapper that arranges header, main content and footer.
+  . The main content is scrollable; the footer is sticky at the bottom when content is short.
+*/
+#main-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Ensure header does not flex-grow and stays at its intrinsic height */
+app-header {
+    flex: 0 0 auto;
+}
+
+.main-content {
+    display: flex;
+    align-items: flex-start;
+    flex: 1 1 auto; /* take remaining space between header and footer */
+    min-height: 0; /* allow children to shrink and enable inner scrolling */
+}
+
+.app-sidenav {
+    flex: 0 0 260px;
+}
+
+.page-wrapper {
+    flex: 1 1 auto;
+    /*padding: 1.5rem;*/
+    box-sizing: border-box;
+    min-height: 0; /* If content exceeds viewport, make this area scrollable instead of page body */
+    overflow: auto;
+}
+
+.footer {
+    text-align: center;
+    /*background:transparent;*/
+}
+
+@media (max-width:600px) {
+    .main-content {
+        flex-direction: column
+    }
+
+    .app-sidenav {
+        display: none
+    }
+
+    .page-wrapper {
+        padding: 1rem
+    }
+}

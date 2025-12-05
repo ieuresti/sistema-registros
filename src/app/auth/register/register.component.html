@@ -1,0 +1,49 @@
+<section class="login-register login-sidebar" style="background-image:url(./assets/images/backgrounds/candado-bg.png);">
+    <mat-card class="login-box" appearance="outlined">
+
+        <mat-card-header>
+            <img mat-card-image src="./assets/images/icons/user-icon.png" alt="user-icon">
+        </mat-card-header>
+
+        <mat-card-content>
+            <form [formGroup]="registerForm" class="login-form" (ngSubmit)="crearUsuario()">
+                <!-- Usuario -->
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Usuario</mat-label>
+                    <input matInput formControlName="user" placeholder="Tu usuario">
+                    <mat-error *ngIf="hasError('user','required')">El usuario es requerido</mat-error>
+                </mat-form-field>
+
+                <!-- Correo -->
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Correo</mat-label>
+                    <input matInput type="email" formControlName="email" placeholder="tu@correo.com">
+                    <mat-error *ngIf="hasError('email','required')">El correo es requerido</mat-error>
+                    <mat-error *ngIf="hasError('email','email')">Introduce un correo válido</mat-error>
+                </mat-form-field>
+
+                <!-- Contraseña -->
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput type="password" formControlName="password" placeholder="Contraseña">
+                    <mat-error *ngIf="hasError('password','required')">La contraseña es requerida</mat-error>
+                    <mat-error *ngIf="hasError('password','minlength')">Mínimo 6 caracteres</mat-error>
+                </mat-form-field>
+
+                <!-- Confirmar Contraseña -->
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Confirma tu contraseña</mat-label>
+                    <input matInput type="password" formControlName="confirmPassword" placeholder="Repite la contraseña">
+                    <mat-error *ngIf="hasError('confirmPassword','required')">Confirma la contraseña</mat-error>
+                    <mat-error *ngIf="contrasenasNoValidas()" role="alert" aria-live="polite">Las contraseñas no coinciden</mat-error>
+                </mat-form-field>
+
+                <div class="actions">
+                    <button type="submit" mat-raised-button color="primary" [disabled]="registerForm.invalid">Registrarse</button>
+                    <button mat-button color="accent" routerLink="/login">¿Ya tienes una cuenta? ¡Inicia sesión aquí!</button>
+                </div>
+            </form>
+        </mat-card-content>
+        
+    </mat-card>
+</section>
