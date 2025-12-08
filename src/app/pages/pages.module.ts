@@ -9,6 +9,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { GenerarCitaComponent } from './generar-cita/generar-cita.component';
 import { EmpresasComponent } from './usuarios/empresas/empresas.component';
 import { EmpresaComponent } from './usuarios/empresas/empresa/empresa.component';
+import { ProveedoresComponent } from './usuarios/proveedores/proveedores.component';
+import { ProveedorComponent } from './usuarios/proveedores/proveedor/proveedor.component';
 
 @NgModule({
   declarations: [
@@ -16,14 +18,18 @@ import { EmpresaComponent } from './usuarios/empresas/empresa/empresa.component'
     DashboardComponent,
     GenerarCitaComponent,
     EmpresasComponent,
-    EmpresaComponent
+    EmpresaComponent,
+    ProveedoresComponent,
+    ProveedorComponent
   ],
   exports: [
     PagesComponent,
     DashboardComponent,
     GenerarCitaComponent,
     EmpresasComponent,
-    EmpresaComponent
+    EmpresaComponent,
+    ProveedoresComponent,
+    ProveedorComponent
   ],
   imports: [
     FormsModule,
