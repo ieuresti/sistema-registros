@@ -1,0 +1,15 @@
+.empresa-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.empresa-form .row { display: flex; gap: 12px; margin-bottom: 12px; }
+.empresa-form .row.two-cols mat-form-field { flex: 1; }
+.empresa-form .full { width: 100%; }
+.actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 12px; }
+
+@media (max-width: 600px) {
+    .empresa-form .row { flex-direction: column; }
+    .actions { justify-content: space-between; }
+}

@@ -1,0 +1,82 @@
+<div class="empresas-container">
+    <!-- Seccion tabla empresas -->
+    <section class="table-section">
+        <mat-card>
+            <mat-card-title>Registradas en el sistema</mat-card-title>
+            <mat-card-content>
+                <div class="table-controls">
+                    <!-- Campo de búsqueda para filtrar la tabla -->
+                    <mat-form-field appearance="outline" class="search-field">
+                        <mat-label>Buscar</mat-label>
+                        <input #searchInput matInput (keyup)="aplicarFiltroBusqueda($event)"
+                            placeholder="Buscar empresa por nombre, correo o teléfono">
+                        <button mat-icon-button matSuffix aria-label="Limpiar búsqueda" (click)="limpiarBuscador(searchInput)">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-form-field>
+
+                    <div class="spacer"></div>
+
+                    <!-- Botón para crear una nueva empresa -->
+                    <div class="actions-right">
+                        <button mat-flat-button color="primary" class="btn-create" (click)="crearEmpresa()">
+                            <mat-icon>add</mat-icon>
+                            <span>Crear empresa</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-wrap">
+                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z2 full-width" matSort>
+
+                        <!-- Nombre -->
+                        <ng-container matColumnDef="nombre">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+                            <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+                        </ng-container>
+
+                        <!-- Direccion -->
+                        <ng-container matColumnDef="direccion">
+                            <th mat-header-cell *matHeaderCellDef>Dirección</th>
+                            <td mat-cell *matCellDef="let element">{{ element.direccion }}</td>
+                        </ng-container>
+
+                        <!-- Correo -->
+                        <ng-container matColumnDef="correo">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Correo</th>
+                            <td mat-cell *matCellDef="let element">{{ element.correo }}</td>
+                        </ng-container>
+
+                        <!-- Telefono -->
+                        <ng-container matColumnDef="telefono">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Teléfono</th>
+                            <td mat-cell *matCellDef="let element">{{ element.telefono }}</td>
+                        </ng-container>
+
+                        <!-- Acciones -->
+                        <ng-container matColumnDef="acciones">
+                            <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                            <td mat-cell *matCellDef="let element">
+                                <button mat-icon-button color="primary" aria-label="Editar"
+                                    (click)="editarEmpresa(element)">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                                <button mat-icon-button color="warn" aria-label="Eliminar"
+                                    (click)="borrarEmpresa(element)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+
+                    <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons>
+                    </mat-paginator>
+                </div>
+
+            </mat-card-content>
+        </mat-card>
+    </section>
+</div>
