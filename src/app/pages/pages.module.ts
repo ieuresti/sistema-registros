@@ -11,6 +11,8 @@ import { EmpresasComponent } from './usuarios/empresas/empresas.component';
 import { EmpresaComponent } from './usuarios/empresas/empresa/empresa.component';
 import { ProveedoresComponent } from './usuarios/proveedores/proveedores.component';
 import { ProveedorComponent } from './usuarios/proveedores/proveedor/proveedor.component';
+import { EventosComponent } from './agenda/eventos/eventos.component';
+import { EventosDialogComponent } from './agenda/eventos-dialog/eventos-dialog.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ProveedorComponent } from './usuarios/proveedores/proveedor/proveedor.c
     EmpresasComponent,
     EmpresaComponent,
     ProveedoresComponent,
-    ProveedorComponent
+    ProveedorComponent,
+    EventosComponent,
+    EventosDialogComponent
   ],
   exports: [
     PagesComponent,
@@ -29,7 +33,9 @@ import { ProveedorComponent } from './usuarios/proveedores/proveedor/proveedor.c
     EmpresasComponent,
     EmpresaComponent,
     ProveedoresComponent,
-    ProveedorComponent
+    ProveedorComponent,
+    EventosComponent,
+    EventosDialogComponent
   ],
   imports: [
     FormsModule,
@@ -37,7 +43,7 @@ import { ProveedorComponent } from './usuarios/proveedores/proveedor/proveedor.c
     ReactiveFormsModule,
     RouterModule, // router-outlet funcione
     SharedModule, // Componentes del header, sidebar, breadcrumb
-    MaterialModule, // Modulo de modulos de Material
+    MaterialModule // Modulo de modulos de Material
   ]
 })
 export class PagesModule { }

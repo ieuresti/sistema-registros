@@ -3,6 +3,10 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+// Registrar el locale de español
+registerLocaleData(localeEs);
 
 if (environment.production) {
   enableProdMode();

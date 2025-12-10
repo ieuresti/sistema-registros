@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>Editar cita</h2>
+
+<mat-dialog-content [formGroup]="form">
+	<!-- Título -->
+	<mat-form-field appearance="outline" class="full">
+		<mat-label>Título</mat-label>
+		<input matInput formControlName="title" />
+		<mat-error *ngIf="form.get('title')?.invalid">El título es requerido</mat-error>
+	</mat-form-field>
+
+	<!-- Fecha -->
+	<mat-form-field appearance="outline">
+		<mat-label>Fecha (YYYY-MM-DD)</mat-label>
+		<input matInput formControlName="date" />
+	</mat-form-field>
+
+	<div class="time-row">
+		<!-- Hora de inicio -->
+		<mat-form-field appearance="outline">
+			<mat-label>Inicio</mat-label>
+			<input matInput formControlName="start" />
+		</mat-form-field>
+		<!-- Hora fin -->
+		<mat-form-field appearance="outline">
+			<mat-label>Fin</mat-label>
+			<input matInput formControlName="end" />
+		</mat-form-field>
+	</div>
+
+	<!-- Notas -->
+	<mat-form-field appearance="outline" class="full">
+		<mat-label>Notas</mat-label>
+		<textarea matInput formControlName="notes"></textarea>
+	</mat-form-field>
+</mat-dialog-content>
+
+<!-- Acciones del dialog -->
+<mat-dialog-actions align="end">
+	<button mat-button (click)="cancel()">Cancelar</button>
+	<button mat-flat-button color="primary" (click)="save()">Guardar</button>
+</mat-dialog-actions>

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,7 +20,10 @@ import { PagesModule } from './pages/pages.module';
     AuthModule, // Componentes de autenticación (login, registro...)
     PagesModule // Componentes de las paginas (ya autenticado)
   ],
-  providers: [],
+  providers: [
+    // Configurar el locale de Angular Material Datepicker
+    { provide: LOCALE_ID, useValue: 'es-ES' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

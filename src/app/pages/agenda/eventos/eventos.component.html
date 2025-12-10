@@ -1,0 +1,48 @@
+<div>
+    <section>
+        <mat-card>
+            <mat-card-title>Agenda</mat-card-title>
+
+            <mat-card-content>
+                <div class="agenda-grid">
+                    <!-- Sección de calendario -->
+                    <div class="calendar-col">
+                        <mat-calendar [dateClass]="claseParaFechaConEvento"
+                            (selectedChange)="onFechaSeleccionada($event)" [selected]="fechaSeleccionada">
+                        </mat-calendar>
+                    </div>
+
+                    <!-- Sección de lista de eventos -->
+                    <div class="list-col">
+                        <h3>Eventos en {{ fechaSeleccionada ? (fechaSeleccionada | date:"EEEE, d 'de' MMMM 'de' y") : '' }}</h3>
+
+                        <mat-list *ngIf="citasDelDia.length; else emptyBlock">
+                            <mat-list-item *ngFor="let cita of citasDelDia">
+                                <!-- Título y hora del evento -->
+                                <div mat-line>{{ cita.title }}</div>
+                                <div mat-line class="secondary">
+                                    {{ cita.start ? cita.start : '' }} {{ cita.end ? ' - ' + cita.end : '' }}
+                                </div>
+                                <!-- Botones de acción -->
+                                <div>
+                                    <button mat-icon-button color="primary" aria-label="Ver"
+                                        (click)="abrirDialogCita(cita)">
+                                        <mat-icon>visibility</mat-icon>
+                                    </button>
+                                    <button mat-icon-button color="warn" aria-label="Eliminar"
+                                        (click)="eliminarCita(cita.id)">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </div>
+                            </mat-list-item>
+                        </mat-list>
+                        <!-- Sección de mensaje cuando no hay eventos -->
+                        <ng-template #emptyBlock>
+                            <p>No hay eventos para este día.</p>
+                        </ng-template>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </section>
+</div>
