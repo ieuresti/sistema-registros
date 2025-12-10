@@ -13,6 +13,8 @@ import { ProveedoresComponent } from './usuarios/proveedores/proveedores.compone
 import { ProveedorComponent } from './usuarios/proveedores/proveedor/proveedor.component';
 import { EventosComponent } from './agenda/eventos/eventos.component';
 import { EventosDialogComponent } from './agenda/eventos-dialog/eventos-dialog.component';
+import { CitasComponent } from '../seguridad/citas/citas.component';
+import { AceptarRechazarCitaComponent } from '../seguridad/aceptar-rechazar-cita/aceptar-rechazar-cita.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { EventosDialogComponent } from './agenda/eventos-dialog/eventos-dialog.c
     EmpresaComponent,
     ProveedoresComponent,
     ProveedorComponent,
+    CitasComponent,
+    AceptarRechazarCitaComponent,
     EventosComponent,
     EventosDialogComponent
   ],
@@ -34,6 +38,8 @@ import { EventosDialogComponent } from './agenda/eventos-dialog/eventos-dialog.c
     EmpresaComponent,
     ProveedoresComponent,
     ProveedorComponent,
+    CitasComponent,
+    AceptarRechazarCitaComponent,
     EventosComponent,
     EventosDialogComponent
   ],

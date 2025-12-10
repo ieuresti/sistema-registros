@@ -1,0 +1,47 @@
+.citas-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.table-section .full-width {
+    width: 100%;
+}
+
+.table-controls { display: flex; justify-content: flex-end; margin-bottom: 8px; }
+.table-wrap { overflow: auto; }
+.full-width { width: 100%; }
+
+mat-chip {
+    font-weight: 600;
+    min-width: 72px;
+    padding: 0 12px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+}
+
+/* Custom color classes for chips */
+.mat-chip.chip-green {
+    background-color: #4caf50 !important;
+    color: #ffffff !important;
+}
+
+.mat-chip.chip-red {
+    background-color: #f44336 !important;
+    color: #ffffff !important;
+}
+
+.mat-chip.chip-blue {
+    background-color: #2196f3 !important;
+    color: #ffffff !important;
+}
+
+.mat-chip.chip-yellow {
+    background-color: #ffeb3b !important;
+    color: #000000 !important;
+}

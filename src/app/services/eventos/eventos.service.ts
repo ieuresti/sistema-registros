@@ -8,22 +8,23 @@ export interface Cita {
 	start?: string;
 	end?: string;
 	notes?: string;
+	visitType?: string;
 }
 
 @Injectable({ providedIn: 'root' })
 export class EventosService {
 	// Datos simulados de citas
 	private citas: Cita[] = [
-		{ id: '1', title: 'Visita ACME', date: new Date().toISOString().slice(0, 10), start: '10:00', end: '11:00' },
-		{ id: '2', title: 'Entrega Documentos', date: new Date(new Date().getTime() + 24 * 3600 * 1000).toISOString().slice(0, 10), start: '14:00' },
-		{ id: '3', title: 'Reunión equipo', date: new Date().toISOString().slice(0, 10), start: '08:30', end: '09:15' },
-		{ id: '4', title: 'Llamada cliente', date: new Date().toISOString().slice(0, 10), start: '09:45', end: '10:15' },
-		{ id: '5', title: 'Inspección sitio', date: new Date().toISOString().slice(0, 10), start: '16:00', end: '17:30' },
-		{ id: '6', title: 'Reunión gerencia', date: new Date(new Date().getTime() + 2 * 24 * 3600 * 1000).toISOString().slice(0, 10), start: '11:00', end: '12:00' },
-		{ id: '7', title: 'Revisión contrato', date: new Date(new Date().getTime() - 24 * 3600 * 1000).toISOString().slice(0, 10), start: '15:00' },
-		{ id: '8', title: 'Demo producto', date: new Date(new Date().getTime() + 7 * 24 * 3600 * 1000).toISOString().slice(0, 10), start: '09:00' },
-		{ id: '9', title: 'Capacitación', date: new Date(new Date().getTime() + 24 * 3600 * 1000).toISOString().slice(0, 10), start: '09:00', end: '11:00' },
-		{ id: '10', title: 'Evento (todo el día)', date: new Date().toISOString().slice(0, 10) }
+		{ id: '1', title: 'Visita ACME', date: new Date().toISOString().slice(0, 10), start: '10:00', end: '11:00', visitType: 'Reunión' },
+		{ id: '2', title: 'Entrega Documentos', date: new Date(new Date().getTime() + 24 * 3600 * 1000).toISOString().slice(0, 10), start: '14:00', visitType: 'Entrega de material' },
+		{ id: '3', title: 'Reunión equipo', date: new Date().toISOString().slice(0, 10), start: '08:30', end: '09:15', visitType: 'Cotización' },
+		{ id: '4', title: 'Llamada cliente', date: new Date().toISOString().slice(0, 10), start: '09:45', end: '10:15', visitType: 'Trabajo' },
+		{ id: '5', title: 'Inspección sitio', date: new Date().toISOString().slice(0, 10), start: '16:00', end: '17:30', visitType: 'Reunión' },
+		{ id: '6', title: 'Reunión gerencia', date: new Date(new Date().getTime() + 2 * 24 * 3600 * 1000).toISOString().slice(0, 10), start: '11:00', end: '12:00', visitType: 'Entrega de material' },
+		{ id: '7', title: 'Revisión contrato', date: new Date(new Date().getTime() - 24 * 3600 * 1000).toISOString().slice(0, 10), start: '15:00', end: '16:00', visitType: 'Cotización' },
+		{ id: '8', title: 'Demo producto', date: new Date(new Date().getTime() + 7 * 24 * 3600 * 1000).toISOString().slice(0, 10), start: '09:00', end: '10:30', visitType: 'Trabajo' },
+		{ id: '9', title: 'Capacitación', date: new Date(new Date().getTime() + 24 * 3600 * 1000).toISOString().slice(0, 10), start: '09:00', end: '11:00', visitType: 'Reunión' },
+		{ id: '10', title: 'Evento (todo el día)', date: new Date().toISOString().slice(0, 10), visitType: 'Trabajo' }
 	];
 
 	constructor() { }

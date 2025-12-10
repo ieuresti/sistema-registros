@@ -1,10 +1,5 @@
 /* Global styles for the application.
-    - Este archivo contiene estilos globales compartidos por toda la app
-    - Algunas reglas están pensadas para clases en <body> que activan layouts (ej. `fix-header`, `boxed`)
-    - Si un selector parece no usarse actualmente, puede ser activado por scripts o por estados opcionales del layout.
 */
-
-/* You can add global styles to this file, and also import other style files */
 
 body {
     background: #fff;

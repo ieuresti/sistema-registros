@@ -1,0 +1,65 @@
+<div class="citas-container">
+    <!-- Seccion tabla citas -->
+    <section class="table-section">
+        <mat-card>
+            <mat-card-title>Agendadas para hoy</mat-card-title>
+            <mat-card-content>
+                <div class="table-controls">
+                    <!-- Campo de búsqueda para filtrar la tabla -->
+                    <mat-form-field appearance="standard">
+                        <mat-label>Buscar</mat-label>
+                        <input matInput (keyup)="aplicarFiltroBusqueda($event)" placeholder="Buscar por nombre o tipo">
+                    </mat-form-field>
+                </div>
+
+                <div class="table-wrap">
+                    <!-- Tabla de visitas recientes -->
+                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z1 full-width" matSort>
+                        <!-- Nombre -->
+                        <ng-container matColumnDef="title">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+                            <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+                        </ng-container>
+
+                        <!-- Tipo de visita -->
+                        <ng-container matColumnDef="tipo">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo de visita</th>
+                            <td mat-cell *matCellDef="let element">
+                                <mat-chip [ngClass]="getChipClass(element.visitType)" selected>
+                                    {{ element.visitType || '-' }}
+                                </mat-chip>
+                            </td>
+                        </ng-container>
+
+                        <!-- Hora entrada -->
+                        <ng-container matColumnDef="start">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Hora entrada</th>
+                            <td mat-cell *matCellDef="let element">{{ element.start || '-' }}</td>
+                        </ng-container>
+
+                        <!-- Hora salida -->
+                        <ng-container matColumnDef="end">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Hora salida</th>
+                            <td mat-cell *matCellDef="let element">{{ element.end || '-' }}</td>
+                        </ng-container>
+
+                        <!-- Acciones -->
+                        <ng-container matColumnDef="actions">
+                            <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                            <td mat-cell *matCellDef="let element">
+                                <button mat-icon-button color="primary" aria-label="Ver" (click)="verCita(element)">
+                                    <mat-icon>visibility</mat-icon>
+                                </button>
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+
+                    <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </section>
+</div>
