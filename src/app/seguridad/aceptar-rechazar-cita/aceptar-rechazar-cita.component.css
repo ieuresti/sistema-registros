@@ -3,3 +3,35 @@
     flex-direction: column;
     gap: 16px;
 }
+
+.cita-grid {
+    display: flex;
+    flex-direction: column; /* single column layout */
+    gap: 16px;
+    align-items: stretch;
+}
+.cita-main { width: 100%; }
+.cita-side { width: 100%; }
+.meta h3 { margin: 0 0 8px 0; }
+.docs { margin-top: 12px; }
+.doc-actions { display:flex; gap:8px; margin-top:8px; }
+.full-width { width: 100%; }
+.secondary { color: rgba(0,0,0,0.6); font-size: 0.9em }
+.actions { display:flex; gap:8px; margin-top:12px; }
+
+/* Espaciado entre los radio buttons y separación respecto al textarea */
+.cita-side mat-radio-group {
+    display: flex;
+    gap: 16px; /* separación entre opciones */
+    align-items: center;
+    margin-bottom: 16px; /* separa del textarea */
+}
+
+.cita-side mat-radio-button {
+    margin-right: 4px;
+}
+
+/* Asegurar que el mat-form-field tenga algo de espacio superior */
+.cita-side .mat-form-field {
+    margin-top: 6px;
+}

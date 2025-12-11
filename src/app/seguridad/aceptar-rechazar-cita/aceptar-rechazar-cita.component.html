@@ -2,7 +2,67 @@
     <section>
         <mat-card>
             <mat-card-content>
-                <h2>Aceptar o Rechazar Cita</h2>
+                <div class="cita-grid">
+                    <div class="cita-main">
+                        <!-- Sección de detalles de la cita -->
+                        <div class="meta">
+                            <h3>{{ cita?.title || 'Nombre visitante' }}</h3>
+                            <p><strong>Entrada:</strong> {{ cita?.start || '-' }}</p>
+                            <p><strong>Salida:</strong> {{ cita?.end || '-' }}</p>
+                            <p><strong>Tipo:</strong> {{ cita?.visitType || '-' }}</p>
+                        </div>
+
+                        <!-- Sección de documentos aportados -->
+                        <div class="docs">
+                            <h4>Documentos aportados</h4>
+                            <p *ngIf="!documentos || (documentos && documentos.length === 0)">
+                                No hay documentos adjuntos.
+                            </p>
+                            <mat-list *ngIf="documentos && documentos.length">
+                                <mat-list-item *ngFor="let d of documentos">
+                                    <div mat-line>{{ d.name }}</div>
+                                    <div mat-line class="secondary">{{ d.type }}</div>
+                                    <div class="doc-actions">
+                                        <button mat-stroked-button color="primary"
+                                            (click)="previsualizarDocumento(d)">Previsualizar</button>
+                                        <button mat-stroked-button color="accent"
+                                            (click)="descargarDocumento(d)">Descargar</button>
+                                    </div>
+                                </mat-list-item>
+                            </mat-list>
+                        </div>
+                    </div>
+
+                    <!-- Sección de aceptar/rechazar cita -->
+                    <div class="cita-side">
+                        <form [formGroup]="form" (ngSubmit)="guardarDecision()">
+                            <mat-radio-group formControlName="accepted">
+                                <mat-radio-button [value]="true">Aceptar</mat-radio-button>
+                                <mat-radio-button [value]="false">Rechazar</mat-radio-button>
+                            </mat-radio-group>
+                            <div class="field-error mat-caption" *ngIf="form.get('accepted')?.invalid">
+                                Seleccione Aceptar o Rechazar.
+                            </div>
+
+                            <mat-form-field appearance="fill" class="full-width">
+                                <mat-label>Comentarios (motivo de aceptación/rechazo)</mat-label>
+                                <textarea matInput formControlName="comment" rows="6"></textarea>
+                                <mat-error *ngIf="form.get('comment')?.hasError('required')">
+                                    El comentario es obligatorio.
+                                </mat-error>
+                            </mat-form-field>
+
+                            <div class="actions">
+                                <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+                                    Guardar decisión
+                                </button>
+                                <button mat-button type="button" (click)="form.reset({ accepted: true, comment: '' })">
+                                    Cancelar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </mat-card-content>
         </mat-card>
     </section>

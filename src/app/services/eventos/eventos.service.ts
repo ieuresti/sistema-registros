@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
@@ -9,13 +10,34 @@ export interface Cita {
 	end?: string;
 	notes?: string;
 	visitType?: string;
+	documents?: Documento[];
+}
+
+export interface Documento {
+	name: string;
+	url: string;        // ruta en assets o URL remota (p. ej. 'assets/sample-docs/id-juan.pdf')
+	type: string;       // etiqueta amigable: 'PDF' | 'Imagen' | 'Excel'...
+	mime?: string;      // 'application/pdf', 'image/jpeg', etc.
+	size?: number;      // bytes (opcional)
 }
 
 @Injectable({ providedIn: 'root' })
 export class EventosService {
 	// Datos simulados de citas
 	private citas: Cita[] = [
-		{ id: '1', title: 'Visita ACME', date: new Date().toISOString().slice(0, 10), start: '10:00', end: '11:00', visitType: 'Reunión' },
+		{
+			id: '1',
+			title: 'Juan Pérez',
+			date: '2025-12-11',
+			start: '09:00',
+			end: '09:30',
+			visitType: 'Entrega',
+			documents: [
+				{ name: 'http-response-codes.pdf', url: 'assets/sample-docs/http-response-codes.pdf', type: 'PDF', mime: 'application/pdf' },
+				{ name: 'eevee-pokemon-wallpaper.jpg', url: 'assets/sample-docs/eevee-pokemon-wallpaper.jpg', type: 'Imagen', mime: 'image/jpeg' },
+				{ name: 'SISTEMA CONTROL DE VISITAS.xlsx', url: 'assets/sample-docs/SISTEMA CONTROL DE VISITAS.xlsx', type: 'Excel', mime: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }
+			]
+		},
 		{ id: '2', title: 'Entrega Documentos', date: new Date(new Date().getTime() + 24 * 3600 * 1000).toISOString().slice(0, 10), start: '14:00', visitType: 'Entrega de material' },
 		{ id: '3', title: 'Reunión equipo', date: new Date().toISOString().slice(0, 10), start: '08:30', end: '09:15', visitType: 'Cotización' },
 		{ id: '4', title: 'Llamada cliente', date: new Date().toISOString().slice(0, 10), start: '09:45', end: '10:15', visitType: 'Trabajo' },
@@ -27,7 +49,7 @@ export class EventosService {
 		{ id: '10', title: 'Evento (todo el día)', date: new Date().toISOString().slice(0, 10), visitType: 'Trabajo' }
 	];
 
-	constructor() { }
+	constructor(private http: HttpClient) { }
 
 	/**
 	 * Endpoint que obtiene todas las citas
@@ -76,5 +98,22 @@ export class EventosService {
 		}
 		// Si no se encontró la cita, devolver false
 		return of(false);
+	}
+
+	/**
+	 * Metodo para obtener los documentos asociados a una cita por su ID
+	 */
+	getDocumentsForCita(citaId: string): Documento[] {
+		const cita = this.citas.find(x => x.id === citaId);
+		// Retorna los documentos asociados a la cita o un array vacío si no hay documentos
+		return cita?.documents || [];
+	}
+
+	/**
+	 * Metodo para descargar un documento dado su URL
+	 */
+	downloadDocument(url: string) {
+		// Retorna Observable<Blob> para que el componente decida qué hacer
+		return this.http.get(url, { responseType: 'blob' });
 	}
 }

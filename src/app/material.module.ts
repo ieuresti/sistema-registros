@@ -21,6 +21,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatRadioModule } from '@angular/material/radio';
 
 const materialModules = [
   MatToolbarModule,
@@ -44,7 +45,8 @@ const materialModules = [
   MatProgressSpinnerModule,
   MatCheckboxModule,
   MatSelectModule,
-  MatChipsModule
+  MatChipsModule,
+  MatRadioModule
 ];
 
 @NgModule({
