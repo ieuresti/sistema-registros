@@ -18,42 +18,19 @@
             </mat-nav-list>
         </mat-expansion-panel>
 
-        <mat-expansion-panel>
+        <mat-expansion-panel *ngFor="let elemento of sidebarMenu">
             <mat-expansion-panel-header>
                 <mat-panel-title>
-                    <mat-icon>groups</mat-icon>
-                    Usuarios
+                    <mat-icon>{{ elemento.icono }}</mat-icon>
+                    {{ elemento.titulo }}
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <mat-nav-list>
-                <a mat-list-item routerLink="/users">Usuarios</a>
-                <a mat-list-item routerLink="/empresas">Empresas</a>
-                <a mat-list-item routerLink="/proveedores">Proveedores</a>
+            <mat-nav-list *ngFor="let subelemento of elemento.submenu">
+                <a mat-list-item [routerLink]="subelemento.url">
+                    {{ subelemento.titulo }}
+                </a>
             </mat-nav-list>
         </mat-expansion-panel>
 
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    <mat-icon>security</mat-icon>
-                    Seguridad
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <mat-nav-list>
-                <a mat-list-item routerLink="/seguridad/citas">Citas</a>
-            </mat-nav-list>
-        </mat-expansion-panel>
-
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    <mat-icon>event</mat-icon>
-                    Agenda
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <mat-nav-list>
-                <a mat-list-item routerLink="/agenda/eventos">Eventos</a>
-            </mat-nav-list>
-        </mat-expansion-panel>
     </mat-accordion>
 </nav>
