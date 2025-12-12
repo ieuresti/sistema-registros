@@ -1,51 +1,34 @@
-/* Page layout styles: layout wrapper that arranges header, main content and footer.
-  . The main content is scrollable; the footer is sticky at the bottom when content is short.
+/* Layout con CSS Grid: header, sidebar, main y footer.
+   - Grid hace explícita la relación entre áreas y facilita el responsive.
 */
 #main-wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: grid;
+  grid-template-columns: 260px 1fr; /* sidebar fijo, contenido flexible */
+  grid-template-rows: auto 1fr auto; /* header / main / footer */
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
-/* Ensure header does not flex-grow and stays at its intrinsic height */
-app-header {
-    flex: 0 0 auto;
+.app-header { grid-area: header; position: sticky; top: 0; z-index: 20; }
+.app-sidenav { grid-area: sidebar; width: 100%; box-sizing: border-box; }
+.page-wrapper { grid-area: main; overflow: auto; padding: 1rem; min-height: 0; }
+.app-footer { grid-area: footer; text-align: center; padding: 0.5rem 0; }
+
+/* Responsive: en pantallas pequeñas, el sidebar se oculta y la página pasa a una columna */
+@media (max-width: 900px) {
+  #main-wrapper {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+  }
+  .app-sidenav { display: none; }
 }
 
-.main-content {
-    display: flex;
-    align-items: flex-start;
-    flex: 1 1 auto; /* take remaining space between header and footer */
-    min-height: 0; /* allow children to shrink and enable inner scrolling */
-}
-
-.app-sidenav {
-    flex: 0 0 260px;
-}
-
-.page-wrapper {
-    flex: 1 1 auto;
-    /*padding: 1.5rem;*/
-    box-sizing: border-box;
-    min-height: 0; /* If content exceeds viewport, make this area scrollable instead of page body */
-    overflow: auto;
-}
-
-.footer {
-    text-align: center;
-    /*background:transparent;*/
-}
-
-@media (max-width:600px) {
-    .main-content {
-        flex-direction: column
-    }
-
-    .app-sidenav {
-        display: none
-    }
-
-    .page-wrapper {
-        padding: 1rem
-    }
-}
+/* TO DO mantener el sidebar accesible en móviles, en lugar de ocultarlo,
+   controlar su visibilidad mediante una clase (ej. `.collapsed`) desde el header. */

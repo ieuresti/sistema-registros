@@ -1,8 +1,7 @@
 /* Sidebar styles: width, spacing and responsive behavior for the app's left navigation */
 .app-sidenav {
-    width: 260px;
     background: #fff;
-    height: 100vh;
+    height: 100%; /* fill the grid area provided by the page layout */
     border-right: 1px solid rgba(0, 0, 0, 0.08);
 }
 
@@ -28,17 +27,4 @@
 
 .sidenav-accordion a.mat-list-item {
     padding-left: 40px
-}
-
-@media (max-width:900px) {
-    .app-sidenav {
-        width: 220px
-    }
-}
-
-@media (max-width:600px) {
-    /* hide sidebar on small screens (you can toggle via a button) */
-    .app-sidenav {
-        display: none
-    }
 }
