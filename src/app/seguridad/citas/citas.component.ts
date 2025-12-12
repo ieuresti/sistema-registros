@@ -2,8 +2,9 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { EventosService, Cita } from '../../services/eventos/eventos.service';
+import { EventosService } from '../../services/eventos/eventos.service';
 import { Router } from '@angular/router';
+import { Cita } from 'src/app/interfaces/cita.interface';
 
 @Component({
     selector: 'app-citas',

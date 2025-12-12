@@ -2,14 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-
-export interface Visit {
-  avatar: string;
-  name: string;
-  visitType: string;
-  email: string;
-  phone: string;
-}
+import { Usuario } from 'src/app/interfaces/usuario.interface';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,17 +22,17 @@ export class DashboardComponent implements OnInit {
 
   displayedColumns: string[] = ['avatar', 'name', 'visitType', 'email', 'phone'];
 
-  tableData: Visit[] = [
-    { avatar: 'https://i.pravatar.cc/40?img=1', name: 'Ana Gómez', visitType: 'Presentación', email: 'ana.gomez@example.com', phone: '+34 600 111 222' },
-    { avatar: 'https://i.pravatar.cc/40?img=2', name: 'Luis Pérez', visitType: 'Cotización', email: 'luis.perez@example.com', phone: '+34 600 333 444' },
-    { avatar: 'https://i.pravatar.cc/40?img=5', name: 'María Ruiz', visitType: 'Trabajo', email: 'maria.ruiz@example.com', phone: '+34 600 555 666' },
-    { avatar: 'https://i.pravatar.cc/40?img=4', name: 'Carlos Díaz', visitType: 'Entrega de material', email: 'carlos.diaz@example.com', phone: '+34 600 777 888' },
-    { avatar: 'https://i.pravatar.cc/40?img=8', name: 'Pedro Martinez', visitType: 'Presentación', email: 'pedro.martinez@example.com', phone: '+34 600 555 666' },
-    { avatar: 'https://i.pravatar.cc/40?img=9', name: 'Samanta Cepeda', visitType: 'Cotización', email: 'samanta.cepeda@example.com', phone: '+34 600 777 888' },
-    { avatar: 'https://i.pravatar.cc/40?img=7', name: 'Fernando Lopez', visitType: 'Trabajo', email: 'fernando.lopez@example.com', phone: '+34 600 555 666' }
+  tableData: Usuario[] = [
+    { id: '1', avatar: 'https://i.pravatar.cc/40?img=1', name: 'Ana Gómez', lastVisitType: 'Presentacion', email: 'ana.gomez@example.com', phone: '+34 600 111 222' },
+    { id: '2', avatar: 'https://i.pravatar.cc/40?img=2', name: 'Luis Pérez', lastVisitType: 'Cotizacion', email: 'luis.perez@example.com', phone: '+34 600 333 444' },
+    { id: '3', avatar: 'https://i.pravatar.cc/40?img=5', name: 'María Ruiz', lastVisitType: 'Trabajo', email: 'maria.ruiz@example.com', phone: '+34 600 555 666' },
+    { id: '4', avatar: 'https://i.pravatar.cc/40?img=4', name: 'Carlos Díaz', lastVisitType: 'Entrega de material', email: 'carlos.diaz@example.com', phone: '+34 600 777 888' },
+    { id: '5', avatar: 'https://i.pravatar.cc/40?img=8', name: 'Pedro Martinez', lastVisitType: 'Presentacion', email: 'pedro.martinez@example.com', phone: '+34 600 555 666' },
+    { id: '6', avatar: 'https://i.pravatar.cc/40?img=9', name: 'Samanta Cepeda', lastVisitType: 'Cotizacion', email: 'samanta.cepeda@example.com', phone: '+34 600 777 888' },
+    { id: '7', avatar: 'https://i.pravatar.cc/40?img=7', name: 'Fernando Lopez', lastVisitType: 'Trabajo', email: 'fernando.lopez@example.com', phone: '+34 600 555 666' }
   ];
 
-  dataSource = new MatTableDataSource<Visit>(this.tableData);
+  dataSource = new MatTableDataSource<Usuario>(this.tableData);
 
   constructor() { }
 
@@ -68,11 +61,11 @@ export class DashboardComponent implements OnInit {
    */
   getChipClass(tipoVisita: string): string {
     switch (tipoVisita) {
-      case 'Presentación':
+      case 'Presentacion':
         return 'chip-blue';
       case 'Trabajo':
         return 'chip-yellow';
-      case 'Cotización':
+      case 'Cotizacion':
         return 'chip-green';
       case 'Entrega de material':
         return 'chip-red';

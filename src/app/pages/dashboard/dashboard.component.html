@@ -49,8 +49,8 @@
                     <ng-container matColumnDef="visitType">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo de visita</th>
                         <td mat-cell *matCellDef="let element">
-                            <mat-chip [ngClass]="getChipClass(element.visitType)" selected>
-                                {{ element.visitType }}
+                            <mat-chip [ngClass]="getChipClass(element.lastVisitType)" selected>
+                                {{ element.lastVisitType }}
                             </mat-chip>
                         </td>
                     </ng-container>

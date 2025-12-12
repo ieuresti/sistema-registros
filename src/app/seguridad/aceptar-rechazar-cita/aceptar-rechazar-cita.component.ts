@@ -1,7 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Cita, Documento, EventosService } from '../../services/eventos/eventos.service';
+import { EventosService } from '../../services/eventos/eventos.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Cita } from 'src/app/interfaces/cita.interface';
+import { Documento } from 'src/app/interfaces/documento.interface';
 
 @Component({
     selector: 'app-aceptar-rechazar-cita',

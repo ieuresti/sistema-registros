@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Cita } from '../../../services/eventos/eventos.service';
+import { Cita } from 'src/app/interfaces/cita.interface';
 
 @Component({
 	selector: 'app-eventos-dialog',

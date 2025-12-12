@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { EventosService, Cita } from '../../../services/eventos/eventos.service';
+import { EventosService } from '../../../services/eventos/eventos.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EventosDialogComponent } from '../eventos-dialog/eventos-dialog.component';
+import { Cita } from 'src/app/interfaces/cita.interface';
 
 @Component({
     selector: 'app-eventos',
