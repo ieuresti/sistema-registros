@@ -15,7 +15,7 @@ export class CitasComponent implements OnInit, AfterViewInit {
     @ViewChild(MatPaginator) paginator!: MatPaginator;
     @ViewChild(MatSort) sort!: MatSort;
 
-    displayedColumns: string[] = ['title', 'tipo', 'start', 'end', 'actions'];
+    displayedColumns: string[] = ['title', 'type', 'start', 'end', 'status', 'actions'];
     dataSource = new MatTableDataSource<Cita>([]);
 
     constructor(
@@ -66,18 +66,34 @@ export class CitasComponent implements OnInit, AfterViewInit {
     /**
      * Metodo para obtener la clase CSS del chip segun el tipo de visita
      */
-    getChipClass(tipoVisita: string): string {
+    getVisitTypeClass(tipoVisita: string): string {
         switch (tipoVisita) {
-            case 'Presentación':
+            case 'Presentacion':
                 return 'chip-blue';
             case 'Trabajo':
                 return 'chip-yellow';
-            case 'Cotización':
+            case 'Cotizacion':
                 return 'chip-green';
             case 'Entrega de material':
                 return 'chip-red';
             default:
                 return 'chip-red';
+        }
+    }
+
+    /**
+     * Metodo para obtener la clase CSS del chip segun el estado de la cita
+     */
+    getStatusClass(estado: string): string {
+        switch (estado) {
+            case 'Pendiente':
+                return 'chip-yellow';
+            case 'Aceptada':
+                return 'chip-green';
+            case 'Rechazada':
+                return 'chip-red';
+            default:
+                return 'chip-blue';
         }
     }
 }

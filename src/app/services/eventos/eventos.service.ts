@@ -126,13 +126,13 @@ export class EventosService {
 			date: '2025-12-12',
 			start: '16:00',
 			end: '16:30',
-			visitType: 'Entrega de material',
+			visitType: 'Presentacion',
 			documents: [
 				{ name: 'http-response-codes.pdf', url: 'assets/sample-docs/http-response-codes.pdf', type: 'PDF', mime: 'application/pdf' },
 				{ name: 'eevee-pokemon-wallpaper.jpg', url: 'assets/sample-docs/eevee-pokemon-wallpaper.jpg', type: 'Imagen', mime: 'image/jpeg' },
 				{ name: 'SISTEMA CONTROL DE VISITAS.xlsx', url: 'assets/sample-docs/SISTEMA CONTROL DE VISITAS.xlsx', type: 'Excel', mime: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }
 			],
-			status: 'Rechazada'
+			status: 'Aceptada'
 		},
 		{
 			id: '10',
